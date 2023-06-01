@@ -81,7 +81,7 @@ async def ow2(ctx, arg1='', arg2=''):
                                     + 'Hero damage/10 min - ' + str(tank_data['hero_dmg_per_10']) + '\n'
                                     + 'Obj kills/10 min - ' + str(tank_data['obj_kills_per_10']) + '\n'
                                     + 'Elims/10 min - ' + str(tank_data['elims_per_10']) + '\n'
-                                    + 'Winrate - ' + str(tank_data['winrate']) + '%', file=File(tank_data['image']))
+                                    + 'Winrate - ' + str(tank_data['winrate']) + '%', file=File('hero_images/' + tank_data['image']))
                     tank_dicts.append(tank_data)
 
                 sorted_tank_dicts = sorted(tank_dicts, key=lambda x:x['winrate'], reverse=True)
@@ -122,7 +122,7 @@ async def ow2(ctx, arg1='', arg2=''):
                                     + 'Hero damage/10 min - ' + str(dmg_data['hero_dmg_per_10']) + '\n'
                                     + 'Final blows/10 min - ' + str(dmg_data['final_blows_per_10']) + '\n'
                                     + 'Elims/10 min - ' + str(dmg_data['elims_per_10']) + '\n'
-                                    + 'Winrate - ' + str(dmg_data['winrate']) + '%', file=File(dmg_data['image']))
+                                    + 'Winrate - ' + str(dmg_data['winrate']) + '%', file=File('hero_images/' + dmg_data['image']))
                     dmg_dicts.append(dmg_data)
 
                 sorted_dmg_dicts = sorted(dmg_dicts, key=lambda x:x['winrate'], reverse=True)
@@ -163,28 +163,28 @@ async def ow2(ctx, arg1='', arg2=''):
                                     + 'Hero damage/10 min - ' + str(supp_data['hero_dmg_per_10']) + '\n'
                                     + 'Healing/10 min - ' + str(supp_data['healing_per_10']) + '\n'
                                     + 'Elims/10 min - ' + str(supp_data['elims_per_10']) + '\n'
-                                    + 'Winrate - ' + str(supp_data['winrate']) + '%', file=File(supp_data['image']))
+                                    + 'Winrate - ' + str(supp_data['winrate']) + '%', file=File('hero_images/' + supp_data['image']))
                     supp_dicts.append(supp_data)
                 sorted_supp_dicts = sorted(supp_dicts, key=lambda x:x['winrate'], reverse=True)
                 if not hero_stats:
                     await ctx.send('Your top 3 tanks in competitive this season: \n' + sorted_tank_dicts[0]['hero'] + ' - ' + str(sorted_tank_dicts[0]['winrate']) + '% winrate in ' 
-                    + str(sorted_tank_dicts[0]['games_played']) + ' games played\n', files=[File(sorted_tank_dicts[0]['image'])])
+                    + str(sorted_tank_dicts[0]['games_played']) + ' games played\n', files=[File('hero_images/' + sorted_tank_dicts[0]['image'])])
                     await ctx.send(sorted_tank_dicts[1]['hero'] + ' - ' + str(sorted_tank_dicts[1]['winrate']) + '% winrate in '
-                    + str(sorted_tank_dicts[1]['games_played']) + ' games played\n', file=File(sorted_tank_dicts[1]['image']))
+                    + str(sorted_tank_dicts[1]['games_played']) + ' games played\n', file=File('hero_images/' + sorted_tank_dicts[1]['image']))
                     await ctx.send(sorted_tank_dicts[2]['hero'] + ' - ' + str(sorted_tank_dicts[2]['winrate']) + '% winrate in '
-                    + str(sorted_tank_dicts[2]['games_played']) + ' games played\n ', file=File(sorted_tank_dicts[2]['image']))
+                    + str(sorted_tank_dicts[2]['games_played']) + ' games played\n ', file=File('hero_images/' + sorted_tank_dicts[2]['image']))
                     await ctx.send('Your top 3 dps in competitive this season: \n' + sorted_dmg_dicts[0]['hero'] + ' - ' + str(sorted_dmg_dicts[0]['winrate']) + '% winrate in ' 
-                    + str(sorted_dmg_dicts[0]['games_played']) + ' games played\n', file=File(sorted_dmg_dicts[0]['image']))
+                    + str(sorted_dmg_dicts[0]['games_played']) + ' games played\n', file=File('hero_images/' + sorted_dmg_dicts[0]['image']))
                     await ctx.send(sorted_dmg_dicts[1]['hero'] + ' - ' + str(sorted_dmg_dicts[1]['winrate']) + '% winrate in '
-                    + str(sorted_dmg_dicts[1]['games_played']) + ' games played\n', file=File(sorted_dmg_dicts[1]['image']))
+                    + str(sorted_dmg_dicts[1]['games_played']) + ' games played\n', file=File('hero_images/' + sorted_dmg_dicts[1]['image']))
                     await ctx.send(sorted_dmg_dicts[2]['hero'] + ' - ' + str(sorted_dmg_dicts[2]['winrate']) + '% winrate in '
-                    + str(sorted_dmg_dicts[2]['games_played']) + ' games played\n', file=File(sorted_dmg_dicts[2]['image']))
+                    + str(sorted_dmg_dicts[2]['games_played']) + ' games played\n', file=File('hero_images/' + sorted_dmg_dicts[2]['image']))
                     await ctx.send('Your top 3 supports in competitive this season: \n' + sorted_supp_dicts[0]['hero'] + ' - ' + str(sorted_supp_dicts[0]['winrate']) + '% winrate in ' 
-                    + str(sorted_supp_dicts[0]['games_played']) + ' games played\n' , file=File(sorted_supp_dicts[0]['image']))
+                    + str(sorted_supp_dicts[0]['games_played']) + ' games played\n' , file=File('hero_images/' + sorted_supp_dicts[0]['image']))
                     await ctx.send(sorted_supp_dicts[1]['hero'] + ' - ' + str(sorted_supp_dicts[1]['winrate']) + '% winrate in '
-                    + str(sorted_supp_dicts[1]['games_played']) + ' games played\n', file=File(sorted_supp_dicts[1]['image']))
+                    + str(sorted_supp_dicts[1]['games_played']) + ' games played\n', file=File('hero_images/' + sorted_supp_dicts[1]['image']))
                     await ctx.send(sorted_supp_dicts[2]['hero'] + ' - ' + str(sorted_supp_dicts[2]['winrate']) + '% winrate in '
-                    + str(sorted_supp_dicts[2]['games_played']) + ' games played.', file=File(sorted_supp_dicts[2]['image']))
+                    + str(sorted_supp_dicts[2]['games_played']) + ' games played.', file=File('hero_images/' + sorted_supp_dicts[2]['image']))
 
 
 bot.run(TOKEN)
